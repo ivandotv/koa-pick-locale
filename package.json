@@ -1,10 +1,10 @@
 {
-  "name": "untilted",
+  "name": "koa-pick-locale",
   "version": "0.0.0",
   "description": "",
   "keywords": [],
   "private": true,
-  "author": "your-username",
+  "author": "ivandotv",
   "license": "MIT",
   "type": "module",
   "main": "./dist/prod/index.cjs",
@@ -37,17 +37,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-username/untilted.git"
+    "url": "git+https://github.com/ivandotv/koa-pick-locale.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/untilted/issues"
+    "url": "https://github.com/ivandotv/koa-pick-locale/issues"
   },
-  "homepage": "https://github.com/your-username/untilted#readme",
+  "homepage": "https://github.com/ivandotv/koa-pick-locale#readme",
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-typescript": "^7.17.12",
     "@changesets/cli": "^2.22.0",
+    "@shopify/jest-koa-mocks": "^4.0.0",
     "@types/accept-language-parser": "^1.5.3",
     "@types/jest": "^28.1.0",
     "@types/koa": "^2.13.4",
