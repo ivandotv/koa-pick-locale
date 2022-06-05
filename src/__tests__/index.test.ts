@@ -41,13 +41,14 @@ describe('Koa pick locale', () => {
       expect(ctx.locale).toBe(targetLocale)
     })
 
-    test('use first header that is defined', async () => {
+    test('pick from array of headers', async () => {
       const targetLocale = 'sr'
       const firstHeader = 'x-first'
       const secondHeader = 'x-second'
 
       const ctx = createMockContext({
         headers: {
+          [firstHeader]: 'fr',
           [secondHeader]: targetLocale
         }
       })
@@ -79,6 +80,86 @@ describe('Koa pick locale', () => {
       const ctx = createMockContext({})
 
       await expect(pickLocale({ pick: [] })(ctx, jest.fn())).rejects.toThrow()
+    })
+  })
+  describe('Pick from cookies', () => {
+    test('get locale from coookie', async () => {
+      const targetLocale = 'sr'
+      const cookieName = 'custom-cookie'
+      const cookieLocale = 'fr,en,sr'
+
+      const ctx = createMockContext({ cookies: { [cookieName]: cookieLocale } })
+
+      await pickLocale({
+        cookies: [cookieName],
+        pick: [targetLocale],
+        order: 'cookieFirst'
+      })(ctx, jest.fn())
+
+      expect(ctx.locale).toBe(targetLocale)
+    })
+
+    test('check array of cookies', async () => {
+      const targetLocale = 'sr'
+      const cookieOne = 'cookie-one'
+      const cookieTwo = 'cookie-two'
+      const cookieLocale = 'fr,en,sr'
+
+      const ctx = createMockContext({
+        cookies: {
+          [cookieOne]: 'ru',
+          [cookieTwo]: cookieLocale
+        }
+      })
+
+      await pickLocale({
+        cookies: [cookieOne, cookieTwo],
+        pick: [targetLocale],
+        order: 'cookieFirst'
+      })(ctx, jest.fn())
+
+      expect(ctx.locale).toBe(targetLocale)
+    })
+
+    test('default order is header, then cookie', async () => {
+      const headerPick = 'sr-en'
+      const cookiePick = 'sr-ab'
+      const headerLocale = 'sr-en'
+      const cookieLocale = 'sr-ab'
+      const cookieName = 'cookie-one'
+
+      const ctx = createMockContext({
+        headers: { 'accept-language': headerLocale },
+        cookies: { [cookieName]: cookieLocale }
+      })
+
+      await pickLocale({
+        cookies: [cookieName],
+        pick: [cookiePick, headerPick]
+      })(ctx, jest.fn())
+
+      expect(ctx.locale).toBe(headerPick)
+    })
+
+    test('check with cookie first', async () => {
+      const headerPick = 'sr-en'
+      const cookiePick = 'sr-ab'
+      const headerLocale = headerPick
+      const cookieLocale = cookiePick
+      const cookieName = 'cookie-one'
+
+      const ctx = createMockContext({
+        headers: { 'accept-language': headerLocale },
+        cookies: { [cookieName]: cookieLocale }
+      })
+
+      await pickLocale({
+        cookies: [cookieName],
+        pick: [headerPick, cookiePick],
+        order: 'cookieFirst'
+      })(ctx, jest.fn())
+
+      expect(ctx.locale).toBe(cookiePick)
     })
   })
 })
