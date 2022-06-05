@@ -7,6 +7,7 @@ specifiers:
   '@changesets/cli': ^2.22.0
   '@shopify/jest-koa-mocks': ^4.0.0
   '@types/accept-language-parser': ^1.5.3
+  '@types/debug': ^4.1.7
   '@types/jest': ^28.1.0
   '@types/koa': ^2.13.4
   '@types/node': ^17.0.39
@@ -16,6 +17,7 @@ specifiers:
   babel-plugin-dev-expression: ^0.2.3
   babel-plugin-transform-define: ^2.0.1
   cross-env: ^7.0.3
+  debug: ^4.3.4
   eslint: ^8.17.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-jest: ^26.4.6
@@ -44,6 +46,7 @@ devDependencies:
   '@changesets/cli': 2.22.0
   '@shopify/jest-koa-mocks': 4.0.0
   '@types/accept-language-parser': 1.5.3
+  '@types/debug': 4.1.7
   '@types/jest': 28.1.0
   '@types/koa': 2.13.4
   '@types/node': 17.0.39
@@ -52,6 +55,7 @@ devDependencies:
   babel-plugin-dev-expression: 0.2.3_@babel+core@7.18.2
   babel-plugin-transform-define: 2.0.1
   cross-env: 7.0.3
+  debug: 4.3.4
   eslint: 8.17.0
   eslint-config-prettier: 8.5.0_eslint@8.17.0
   eslint-plugin-jest: 26.4.6_367bfb37edca74f1f785e9ad03fc60f1
@@ -2206,6 +2210,12 @@ packages:
       '@types/node': 17.0.39
     dev: true
 
+  /@types/debug/4.1.7:
+    resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
+    dependencies:
+      '@types/ms': 0.7.31
+    dev: true
+
   /@types/estree/0.0.39:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
     dev: true
@@ -2307,6 +2317,10 @@ packages:
 
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
+    dev: true
+
+  /@types/ms/0.7.31:
+    resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
   /@types/node/12.20.49:

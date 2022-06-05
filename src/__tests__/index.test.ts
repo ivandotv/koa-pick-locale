@@ -1,6 +1,19 @@
 import { createMockContext } from '@shopify/jest-koa-mocks'
 import { pickLocale } from '../index'
 
+// eslint-disable-next-line no-var
+var mockDebug: jest.Mock
+
+jest.mock('debug', () => {
+  mockDebug = jest.fn()
+
+  return () => mockDebug
+})
+
+beforeEach(() => {
+  mockDebug.mockClear()
+})
+
 describe('Koa pick locale', () => {
   describe('Pick from header', () => {
     test('default header is "accept-header"', async () => {
@@ -160,6 +173,60 @@ describe('Koa pick locale', () => {
       })(ctx, jest.fn())
 
       expect(ctx.locale).toBe(cookiePick)
+    })
+  })
+
+  describe('Debug logging', () => {
+    test('log cookie search', async () => {
+      const targetLocale = 'sr'
+      const cookieName = 'custom-cookie'
+      const cookieLocale = 'fr,en,sr'
+
+      const ctx = createMockContext({ cookies: { [cookieName]: cookieLocale } })
+
+      await pickLocale({
+        cookies: [cookieName],
+        pick: [targetLocale],
+        order: 'cookieFirst'
+      })(ctx, jest.fn())
+
+      expect(mockDebug).toHaveBeenCalledTimes(2)
+      expect(mockDebug.mock.calls[0][0]).toMatch(`${cookieName}`)
+      expect(mockDebug.mock.calls[1][0]).toMatch(
+        `${targetLocale} from ${cookieName}`
+      )
+    })
+
+    test('log using default locale', async () => {
+      const defaultLocale = 'sr'
+      const ctx = createMockContext()
+
+      await pickLocale({
+        pick: ['fr'],
+        default: defaultLocale
+      })(ctx, jest.fn())
+
+      expect(mockDebug).toHaveBeenCalledTimes(1)
+      expect(mockDebug.mock.calls[0][0]).toMatch(
+        new RegExp(`default locale: ${defaultLocale}`)
+      )
+    })
+
+    test('log from header search', async () => {
+      const targetLocale = 'sr'
+      const headerName = 'accept-language'
+
+      const ctx = createMockContext({
+        headers: { [headerName]: targetLocale }
+      })
+
+      await pickLocale({ default: 'en', pick: ['sr', 'ru'] })(ctx, jest.fn())
+
+      expect(mockDebug).toHaveBeenCalledTimes(2)
+      expect(mockDebug.mock.calls[0][0]).toMatch(`${headerName}`)
+      expect(mockDebug.mock.calls[1][0]).toMatch(
+        `${targetLocale} from ${headerName}`
+      )
     })
   })
 })

@@ -1,7 +1,9 @@
 import parser from 'accept-language-parser'
+import debug from 'debug'
 import * as Koa from 'koa'
 
-//TODO - setup debug module
+const log = debug('koa-pick-locale')
+
 export function pickLocale(options?: {
   headers?: string[]
   default?: string
@@ -34,8 +36,10 @@ export function pickLocale(options?: {
         const headerHit = ctx.request.get(header)
 
         if (headerHit) {
+          log(`checking header: ${header}`)
           const localeHit = parser.pick(opts.pick, headerHit)
           if (localeHit) {
+            log(`picked ${localeHit} from ${header}`)
             locale = localeHit
             break
           }
@@ -46,8 +50,11 @@ export function pickLocale(options?: {
         const cookieHit = ctx.cookies.get(cookie)
 
         if (cookieHit) {
+          log(`checking cookie: ${cookie}`)
           const localeHit = parser.pick(opts.pick, cookieHit)
           if (localeHit) {
+            log(`picked ${localeHit} from ${cookie}`)
+
             locale = localeHit
             break
           }
@@ -56,6 +63,8 @@ export function pickLocale(options?: {
     }
 
     ctx.locale = locale || opts.default
+
+    locale ? null : log(`picked default locale: ${ctx.locale}`)
 
     return next()
   }
