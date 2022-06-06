@@ -1,6 +1,6 @@
 {
   "name": "koa-pick-locale",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Koa middleware to pick locale from an array of supported locales",
   "keywords": [
     "koa",
