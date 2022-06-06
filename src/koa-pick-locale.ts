@@ -9,7 +9,7 @@ export type Options = {
   default?: string
   pick: string[]
   cookies?: string[]
-  order?: 'cookieFirst' | 'headerFirst'
+  order?: 'cookiesFirst' | 'headersFirst'
 }
 
 export function pickLocale(options?: Options) {
@@ -17,7 +17,7 @@ export function pickLocale(options?: Options) {
     default: options?.default || 'en',
     headers: [...(options?.headers || []), 'accept-language'],
     pick: options?.pick,
-    order: options?.order || 'headerFirst',
+    order: options?.order || 'headersFirst',
     cookies: [...(options?.cookies || [])]
   }
 
@@ -33,7 +33,7 @@ export function pickLocale(options?: Options) {
 
     let locale
 
-    if (opts.order === 'headerFirst') {
+    if (opts.order === 'headersFirst') {
       for (const header of opts.headers) {
         const headerHit = ctx.request.get(header)
 

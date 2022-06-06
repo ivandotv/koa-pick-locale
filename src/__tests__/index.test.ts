@@ -106,7 +106,7 @@ describe('Koa pick locale', () => {
       await pickLocale({
         cookies: [cookieName],
         pick: [targetLocale],
-        order: 'cookieFirst'
+        order: 'cookiesFirst'
       })(ctx, jest.fn())
 
       expect(ctx.locale).toBe(targetLocale)
@@ -128,7 +128,7 @@ describe('Koa pick locale', () => {
       await pickLocale({
         cookies: [cookieOne, cookieTwo],
         pick: [targetLocale],
-        order: 'cookieFirst'
+        order: 'cookiesFirst'
       })(ctx, jest.fn())
 
       expect(ctx.locale).toBe(targetLocale)
@@ -169,7 +169,7 @@ describe('Koa pick locale', () => {
       await pickLocale({
         cookies: [cookieName],
         pick: [headerPick, cookiePick],
-        order: 'cookieFirst'
+        order: 'cookiesFirst'
       })(ctx, jest.fn())
 
       expect(ctx.locale).toBe(cookiePick)
@@ -187,7 +187,7 @@ describe('Koa pick locale', () => {
       await pickLocale({
         cookies: [cookieName],
         pick: [targetLocale],
-        order: 'cookieFirst'
+        order: 'cookiesFirst'
       })(ctx, jest.fn())
 
       expect(mockDebug).toHaveBeenCalledTimes(2)
