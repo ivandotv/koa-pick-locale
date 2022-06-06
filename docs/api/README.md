@@ -1,32 +1,66 @@
-untilted
+koa-pick-locale
 
-# untilted
+# koa-pick-locale
 
 ## Table of contents
 
+### Type Aliases
+
+- [Options](README.md#options)
+
 ### Functions
 
-- [demo](README.md#demo)
+- [pickLocale](README.md#picklocale)
 
-## Functions
+## Type Aliases
 
-### demo
+### Options
 
-▸ **demo**(): `void`
+Ƭ **Options**: `Object`
 
-Demo function for template repository
+#### Type declaration
 
-**`remarks`**
-Read more about TSDoc at: [https://github.com/microsoft/tsdoc](https://github.com/microsoft/tsdoc)
-
-**`beta`**
-
-#### Returns
-
-`void`
-
-Nothing!
+| Name | Type |
+| :------ | :------ |
+| `cookies?` | `string`[] |
+| `default?` | `string` |
+| `headers?` | `string`[] |
+| `order?` | ``"cookiesFirst"`` \| ``"headersFirst"`` |
+| `pick` | `string`[] |
 
 #### Defined in
 
-[index.ts:12](https://github.com/ivandotv/microbundle-template/blob/56ba4dd/src/index.ts#L12)
+[koa-pick-locale.ts:7](https://github.com/ivandotv/koa-pick-locale/blob/b778183/src/koa-pick-locale.ts#L7)
+
+## Functions
+
+### pickLocale
+
+▸ **pickLocale**(`options?`): (`ctx`: `ParameterizedContext`<`DefaultState`, `DefaultContext`, `unknown`\>, `next`: `Next`) => `Promise`<`any`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `options?` | [`Options`](README.md#options) |
+
+#### Returns
+
+`fn`
+
+▸ (`ctx`, `next`): `Promise`<`any`\>
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `ctx` | `ParameterizedContext`<`DefaultState`, `DefaultContext`, `unknown`\> |
+| `next` | `Next` |
+
+##### Returns
+
+`Promise`<`any`\>
+
+#### Defined in
+
+[koa-pick-locale.ts:15](https://github.com/ivandotv/koa-pick-locale/blob/b778183/src/koa-pick-locale.ts#L15)
