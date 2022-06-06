@@ -4,13 +4,15 @@ import * as Koa from 'koa'
 
 const log = debug('koa-pick-locale')
 
-export function pickLocale(options?: {
+export type Options = {
   headers?: string[]
   default?: string
   pick: string[]
   cookies?: string[]
   order?: 'cookieFirst' | 'headerFirst'
-}) {
+}
+
+export function pickLocale(options?: Options) {
   const opts = {
     default: options?.default || 'en',
     headers: [...(options?.headers || []), 'accept-language'],
