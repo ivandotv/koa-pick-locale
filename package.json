@@ -1,18 +1,22 @@
 {
   "name": "koa-pick-locale",
   "version": "0.0.0",
-  "description": "",
-  "keywords": [],
-  "private": true,
+  "description": "Koa middleware to pick locale from an array of supported locales",
+  "keywords": [
+    "koa",
+    "koa-middleware",
+    "koa-locale",
+    "koa-language",
+    "koa-pick-locale"
+  ],
+  "private": false,
   "author": "ivandotv",
   "license": "MIT",
   "type": "module",
   "main": "./dist/prod/index.cjs",
   "module": "./dist/prod/index.modern.js",
-  "umd:main": "./dist/prod/index.umd.js",
   "exports": {
     "require": "./dist/prod/index.cjs",
-    "development": "./dist/dev/index.modern.js",
     "default": "./dist/prod/index.modern.js"
   },
   "types": "./dist/types/index.d.ts",
@@ -28,8 +32,7 @@
     "test:watch": "jest --watch",
     "test:ci": "jest --runInBand --ci --coverage --coverageDirectory=coverage",
     "build:prod": "cross-env NODE_ENV=production microbundle --tsconfig ./tsconfig.json  --format modern,cjs,umd  --output dist/prod/index.js",
-    "build:dev": "cross-env NODE_ENV=development microbundle --define process.env.NODE_ENV=development --tsconfig ./tsconfig.json --generateTypes false --format modern --output dist/dev/index.js",
-    "build": "rm -rf ./dist && pnpm build:dev && pnpm build:prod",
+    "build": "rm -rf ./dist && pnpm build:prod",
     "gen:docs": "rm -rf ./docs/api && typedoc --options typedoc.cjs",
     "prepublishOnly": "pnpm build",
     "prepare": "husky install",
@@ -59,7 +62,6 @@
     "babel-plugin-dev-expression": "^0.2.3",
     "babel-plugin-transform-define": "^2.0.1",
     "cross-env": "^7.0.3",
-    "debug": "^4.3.4",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "^26.4.6",
@@ -79,6 +81,7 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "accept-language-parser": "^1.5.0"
+    "accept-language-parser": "^1.5.0",
+    "debug": "^4.3.4"
   }
 }

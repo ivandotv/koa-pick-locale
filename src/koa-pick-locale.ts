@@ -1,6 +1,6 @@
 import parser from 'accept-language-parser'
 import debug from 'debug'
-import * as Koa from 'koa'
+import type * as Koa from 'koa'
 
 const log = debug('koa-pick-locale')
 
