@@ -5,7 +5,7 @@ specifiers:
   '@babel/preset-env': ^7.18.2
   '@babel/preset-typescript': ^7.17.12
   '@changesets/cli': ^2.22.0
-  '@shopify/jest-koa-mocks': ^4.0.0
+  '@shopify/jest-koa-mocks': ^5.0.0
   '@types/accept-language-parser': ^1.5.3
   '@types/debug': ^4.1.7
   '@types/jest': ^28.1.1
@@ -45,7 +45,7 @@ devDependencies:
   '@babel/preset-env': 7.18.2_@babel+core@7.18.2
   '@babel/preset-typescript': 7.17.12_@babel+core@7.18.2
   '@changesets/cli': 2.22.0
-  '@shopify/jest-koa-mocks': 4.0.0
+  '@shopify/jest-koa-mocks': 5.0.0
   '@types/accept-language-parser': 1.5.3
   '@types/debug': 4.1.7
   '@types/jest': 28.1.1
@@ -2010,8 +2010,8 @@ packages:
       rollup: 2.75.5
     dev: true
 
-  /@shopify/jest-koa-mocks/4.0.0:
-    resolution: {integrity: sha512-vzj95s/xPcASmhdXGW9MMzNlcx0Wdn6WTmcuCUgJbB1fm8rGepf+QYOZF6dtLMYC2asLROX/jygsE57q90DAsA==}
+  /@shopify/jest-koa-mocks/5.0.0:
+    resolution: {integrity: sha512-keF5fgqAzWgC4O5uwUgQawp80IsDJdfyyMvWnIcsMaYw9CgURm4CW+v9NskUAn6AeaHd4Tkv+pWCFg/LRHHf4w==}
     engines: {node: ^14.17.0 || >=16.0.0}
     dependencies:
       koa: 2.13.4
@@ -3373,7 +3373,7 @@ packages:
     dev: true
 
   /ee-first/1.1.1:
-    resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=}
+    resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: true
 
   /ejs/3.1.8:
@@ -5276,7 +5276,7 @@ packages:
     dev: true
 
   /media-typer/0.3.0:
-    resolution: {integrity: sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=}
+    resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
     engines: {node: '>= 0.6'}
     dev: true
 
@@ -6814,7 +6814,7 @@ packages:
     dev: true
 
   /statuses/1.5.0:
-    resolution: {integrity: sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=}
+    resolution: {integrity: sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==}
     engines: {node: '>= 0.6'}
     dev: true
 
@@ -7296,7 +7296,7 @@ packages:
     dev: true
 
   /vary/1.1.2:
-    resolution: {integrity: sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=}
+    resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
     dev: true
 
